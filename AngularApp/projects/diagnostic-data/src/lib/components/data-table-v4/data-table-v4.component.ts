@@ -37,11 +37,16 @@ export class DataTableV4Component extends DataRenderBaseComponent implements Aft
       }
     }
 
-    let tableHeight = `${this.calculateTableHeight()}px`;
+    let tableHeight = "";
+    if (this.estimateTableHeight() >= this.heightThreshold) {
+      tableHeight = `${this.heightThreshold}px`;
+    }
     if (this.renderingProperties.height) {
       tableHeight = this.renderingProperties.height;
     }
-    this.fabDetailsList.styles = { root: { height: tableHeight } };
+    if (tableHeight !== "") {
+      this.fabDetailsList.styles = { root: { height: tableHeight } };
+    }
 
     this.fabDetailsList.layoutMode = DetailsListLayoutMode.justified;
 
@@ -73,6 +78,7 @@ export class DataTableV4Component extends DataRenderBaseComponent implements Aft
   allowColumnSearch: boolean = false;
   searchTimeout: any;
   searchAriaLabel = "Filter by all columns";
+  heightThreshold = window.innerHeight * 0.5;
   @ViewChild(FabDetailsListComponent, { static: true }) fabDetailsList: FabDetailsListComponent;
   @ViewChild('emptyTableFooter', { static: true }) emptyTableFooter: TemplateRef<any>
   protected processData(data: DiagnosticData) {
@@ -168,10 +174,8 @@ export class DataTableV4Component extends DataRenderBaseComponent implements Aft
     });
   }
 
-  calculateTableHeight(): number {
-    const maxTableHeight = 300;
-    const minTableHeight = 100;
-    return Math.min(maxTableHeight, 20 * this.rowsClone.length + minTableHeight);
+  estimateTableHeight(): number {
+    return 25 * this.rowsClone.length;
   }
 }
 
