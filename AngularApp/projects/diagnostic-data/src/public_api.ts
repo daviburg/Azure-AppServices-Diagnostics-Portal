@@ -37,3 +37,5 @@ export * from './lib/models/solution-type-tag';
 export * from './lib/models/resource-descriptor';
 
 export * from './lib/components/detector-list-analysis/detector-list-analysis.component'
+
+export * from './lib/utilities/pii-utilities';
