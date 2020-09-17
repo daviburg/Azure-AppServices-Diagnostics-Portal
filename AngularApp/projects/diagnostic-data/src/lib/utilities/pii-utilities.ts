@@ -35,7 +35,7 @@ export class PIIUtilities {
     }
 
     public static maskQueryString(text: string) {
-        const regex = /(?<=https?:\/\/([\w\.-_%]+\?)[\w-\._&%]+)=[\w-\._%]+/g;
+        const regex = /(?<=https?:\/\/[\w\.-_%]+\?)([\w-\._&%]+=[\w-\._%]+)+/g;
         return text.replace(regex,"****");
     }   
 }
