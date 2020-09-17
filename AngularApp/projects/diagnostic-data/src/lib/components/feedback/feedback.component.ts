@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TelemetryService } from '../../services/telemetry/telemetry.service';
 import { TelemetryEventNames } from '../../services/telemetry/telemetry.common';
+import { PIIUtilities } from '../../utilities/pii-utilities';
 
 @Component({
   selector: 'feedback',
@@ -48,7 +49,7 @@ export class FeedbackComponent implements OnInit {
   public feedbackMessageSubmitted() {
     const eventProps = {
       Rating: String(this.rating),
-      Feedback: this.feedbackText
+      Feedback: PIIUtilities.removePII(this.feedbackText)
     };
 
     this.showThanksMessage = true;

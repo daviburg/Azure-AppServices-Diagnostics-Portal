@@ -1,7 +1,8 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { PanelType } from 'office-ui-fabric-react';
-import { TelemetryService, TelemetryEventNames } from 'diagnostic-data';
+import { TelemetryService, TelemetryEventNames, PIIUtilities } from 'diagnostic-data';
 import { Globals } from '../../../globals';
+
 
 @Component({
   selector: 'fabric-feedback',
@@ -45,7 +46,7 @@ export class FabricFeedbackComponent implements AfterViewInit {
   submitFeedback() {
     const eventProps = {
       Rating: String(this.rating),
-      Feedback: this.feedbackText
+      Feedback: PIIUtilities.removePII(this.feedbackText)
     };
     const detectorName = this.globals.getDetectorName();
     this.ratingEventProperties = {
