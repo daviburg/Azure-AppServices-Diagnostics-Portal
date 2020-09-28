@@ -219,6 +219,6 @@ export class FabricSearchResultsComponent {
 
   getResultAriaLabel(index:number):string {
     const featureName = this.features[index].name;
-    return `${index} of ${this.features.length},${featureName}`;
+    return `${index + 1} of ${this.features.length},${featureName}`;
   }
 }
