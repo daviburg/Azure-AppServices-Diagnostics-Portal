@@ -4,7 +4,7 @@
 <ng-template #insightView>
   <div *ngFor="let insight of insights" class="insight-container" attr.name="{{insight.title}}"
     attr.aria-label="{{insight.title}}" attr.aria-expanded="{{insight.isExpanded}}" role="button"
-    (keyup.enter)="toggleInsightStatus(insight)">
+    (keyup.enter)="toggleInsightStatus(insight)" tabindex="0">
     <div div class="panel insight-panel">
       <div class="panel-heading" (click)="toggleInsightStatus(insight)">
         <h5 class="panel-title" [class.clickable-header]="hasContent(insight)">
