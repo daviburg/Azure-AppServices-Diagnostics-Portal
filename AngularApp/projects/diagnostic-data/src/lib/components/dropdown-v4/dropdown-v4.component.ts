@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IDropdownOption } from 'office-ui-fabric-react';
+import { IDropdownOption, IDropdownProps } from 'office-ui-fabric-react';
 import { DataRenderBaseComponent } from '../data-render-base/data-render-base.component';
 import { Rendering, DiagnosticData, DataTableResponseObject } from '../../models/detector';
 
@@ -31,6 +31,10 @@ export class DropdownV4Component extends DataRenderBaseComponent {
   fabDropdownWidth: number;
   Type = DropdownType;
   Position = DropdownPosition;
+  styles:IDropdownProps['styles'] = {
+    label: {float : "left"},
+    root: {width : "250px"}
+  };
   private keyDataMapping: Map<string, DiagnosticData[]>;
 
   protected processData(data: DiagnosticData) {
@@ -105,6 +109,6 @@ export class DropdownV4Component extends DataRenderBaseComponent {
     options.forEach(option => {
       length = Math.max(length, option.text.length);
     });
-    return length * 11;
+    return (length + this.label.length) * 11 ;
   }
 }

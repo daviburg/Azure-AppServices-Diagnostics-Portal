@@ -42,9 +42,9 @@
   <div class="fabric-dropdown-header" style="display: flex;" [ngStyle]="{'justify-content': dropdownPostion == Position.FloatRight ? 'space-between' : 'start'}">
     <span class="fabric-dropdown-title">{{renderingProperties.title}}</span>
     <div style="display: flex">
-      <label for="dropdownV4" tabindex="0" [attr.aria-label]="label" role="text">{{label}}:</label>
-      <fab-dropdown id="dropdownV4" [options]="options" (onChange)="selectFabricKey($event)" [defaultSelectedKey]="selectedKey"
-        contentStyle="margin-top: -5px; margin-left: 5px;width:{{fabDropdownWidth}}px;"></fab-dropdown>
+      <!-- <label for="dropdownV4" tabindex="0" [attr.aria-label]="label" role="text">{{label}}:</label> -->
+      <fab-dropdown [styles]="styles" [label]="label" [options]="options" (onChange)="selectFabricKey($event)" [defaultSelectedKey]="selectedKey"
+        ></fab-dropdown>
     </div>
   </div>
   <div class="fabric-body-container">
