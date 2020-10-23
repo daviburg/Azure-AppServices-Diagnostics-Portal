@@ -67,5 +67,17 @@ export class StorageService {
       }));
   }
 
+  randomHash(): string {
+    //http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
+    return Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
+  }
+
+  getNewStorageAccoutName(siteName: string): string {
+    const searchRegExp = /-/gi;
+    siteName = siteName.replace(searchRegExp, '');
+    siteName = siteName.substring(0, siteName.length > 6 ? 6 : siteName.length);
+    return siteName + this.randomHash().toLowerCase();
+  }
+
 
 }

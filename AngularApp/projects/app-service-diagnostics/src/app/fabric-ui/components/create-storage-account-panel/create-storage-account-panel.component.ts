@@ -65,15 +65,8 @@ export class CreateStorageAccountPanelComponent implements OnInit {
           this.errorMessage = "Failed to retrieve storage accounts";
           this.error = error;
         });
-      this.newStorageAccountName = this.getNewStorageAccoutName(this._siteService.currentSiteStatic.name);
+      this.newStorageAccountName = this._storageService.getNewStorageAccoutName(this._siteService.currentSiteStatic.name);
     });
-  }
-
-  getNewStorageAccoutName(siteName: string): string {
-    const searchRegExp = /-/gi;
-    siteName = siteName.replace(searchRegExp, '');
-    siteName = siteName.substring(0, siteName.length > 6 ? 6 : siteName.length);
-    return siteName + this.randomHash().toLowerCase();
   }
 
   initStorageAccounts(storageAccounts: StorageAccount[], currentLocation: string) {
@@ -105,11 +98,6 @@ export class CreateStorageAccountPanelComponent implements OnInit {
     let location = this._siteService.currentSiteStatic.location;
     location = location.replace(/\s/g, "").toLowerCase();
     return location;
-  }
-
-  randomHash(): string {
-    //http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
-    return Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
   }
 
   dismissedHandler() {

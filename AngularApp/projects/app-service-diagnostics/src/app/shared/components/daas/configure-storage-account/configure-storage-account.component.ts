@@ -63,12 +63,7 @@ export class ConfigureStorageAccountComponent implements OnInit {
   setDefaultValues() {
     this.chosenStorageAccount = this.storageAccounts[0];
     this.saveEnabled = true;
-    this.newStorageAccountName = (this._siteService.currentSiteStatic.name.substring(0, 6) + this.randomHash()).toLowerCase();
-  }
-
-  randomHash(): string {
-    //http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
-    return Math.random().toString(36).substring(2, 5) + Math.random().toString(36).substring(2, 5);
+    this.newStorageAccountName = this._storageService.getNewStorageAccoutName(this._siteService.currentSiteStatic.name);
   }
 
   chooseOption(option: any) {
