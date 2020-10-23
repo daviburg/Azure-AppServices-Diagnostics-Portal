@@ -12,7 +12,7 @@ var productPreferredSitesConfig: preferredSitesConfig = {
     //AZURE KUBERNETES SERVICES
     "16450": ["github.com/Azure/AKS", "kubernetes.io/docs", "kubernetes.io/blog", "stackoverflow.com"],
     //LOGIC APPS
-    "15791": ["github.com/logicappsio", "github.com/Azure/logicapps", "stackoverflow.com"],
+    "15791": ["docs.microsoft.com/azure/logic-apps", "github.com/logicappsio", "github.com/Azure/logicapps", "techcommunity.microsoft.com/t5/integrations-on-azure", "stackoverflow.com"],
     //API Management
     "15551": ["github.com/Azure/api-management-samples", "github.com/Azure/azure-api-management-devops-resource-kit", "github.com/Azure/api-management-developer-portal", "stackoverflow.com"]
 };
